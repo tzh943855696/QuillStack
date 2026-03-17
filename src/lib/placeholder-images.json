@@ -1,0 +1,76 @@
+{
+  "placeholderImages": [
+    {
+      "id": "site-avatar",
+      "description": "A placeholder for the site owner's avatar.",
+      "imageUrl": "https://images.unsplash.com/photo-1643590081106-5c802b4a47c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwb3J0cmFpdCUyMHBlcnNvbnxlbnwwfHx8fDE3NjIwNjk4OTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "portrait person"
+    },
+    {
+      "id": "author-avatar",
+      "description": "A placeholder for the article author's avatar.",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjE5ODk0NTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "site-hero",
+      "description": "A placeholder for the site's main hero banner.",
+      "imageUrl": "https://images.unsplash.com/photo-1519662978799-2f05096d3636?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBhcmNoaXRlY3R1cmV8ZW58MHx8fHwxNzYyMDY5OTI2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern architecture"
+    },
+    {
+      "id": "article-1-image",
+      "description": "Placeholder for the first article.",
+      "imageUrl": "https://images.unsplash.com/photo-1632251141959-40b21a6c118c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx0ZWNobm9sb2d5JTIwY29kZXxlbnwwfHx8fDE3NjIwMDk2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "technology code"
+    },
+    {
+      "id": "article-2-image",
+      "description": "Placeholder for the second article.",
+      "imageUrl": "https://images.unsplash.com/photo-1704121113061-d174b9b9219b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhcnQlMjBkZXNpZ258ZW58MHx8fHwxNzYyMDQ2Mjk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "art design"
+    },
+    {
+      "id": "article-3-image",
+      "description": "Placeholder for the third article.",
+      "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb2RlfGVufDB8fHx8MTc2MjE0NTkwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "code computer"
+    },
+    {
+      "id": "article-4-image",
+      "description": "Placeholder for the fourth article.",
+      "imageUrl": "https://images.unsplash.com/photo-1455390582262-044cdead277a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3cml0aW5nfGVufDB8fHx8MTc2MjE0NTkyNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "writing content"
+    },
+    {
+      "id": "article-5-image",
+      "description": "Placeholder for the fifth article.",
+      "imageUrl": "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkZXNpZ24lMjB0aGlua2luZ3xlbnwwfHx8fDE3NjIxNDU5NTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "design thinking"
+    },
+    {
+      "id": "article-9-image",
+      "description": "Placeholder for the markdown test article.",
+      "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb2RlfGVufDB8fHx8MTc2MjE0NTkwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "code laptop"
+    },
+    {
+      "id": "article-6-image",
+      "description": "Placeholder for the habits article.",
+      "imageUrl": "https://images.unsplash.com/photo-1644946969855-c0d56c99413a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxoYWJpdHMlMjByb3V0aW5lfGVufDB8fHx8MTc2MjA3NTUyNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "habits routine"
+    },
+    {
+      "id": "article-7-image",
+      "description": "Placeholder for the remote work article.",
+      "imageUrl": "https://images.unsplash.com/photo-1586227740560-8cf2732c1531?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZW1vdGUlMjB3b3JrfGVufDB8fHx8MTc2MTk1NzUyMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "remote work"
+    },
+    {
+      "id": "article-8-image",
+      "description": "Placeholder for the cooking article.",
+      "imageUrl": "https://images.unsplash.com/photo-1630441508966-431c08536d1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjb29raW5nJTIwZm9vZHxlbnwwfHx8fDE3NjIwNjMxNDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cooking food"
+    }
+  ]
+}

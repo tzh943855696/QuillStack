@@ -1,0 +1,90 @@
+{
+  "siteTitle": "QuillStack - 静态博客开发示例",
+  "siteDescription": "这是一个基于 Next.js + Tailwind CSS 构建的静态博客示例站点，展示了现代前端技术栈的最佳实践。包含文章展示、分类管理、响应式设计、SEO 优化等功能模块，适合作为个人博客或技术文档站点的 starter 模板。",
+  "header": {
+    "title": "QuillStack",
+    "bio": "🚀 一个轻量级、高性能的静态博客系统示例。采用 Next.js App Router、Tailwind CSS、TypeScript 构建，支持 Markdown 写作、自动生成 OG 图片、暗色模式等现代特性。适合开发者快速搭建个人博客或文档站点。",
+    "avatarUrl": "https://api.dicebear.com/7.x/shapes/svg?seed=developer&backgroundColor=b6e3f4",
+    "avatarHint": "Developer",
+    "heroImageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&auto=format&fit=crop",
+    "heroImageHint": "Coding workspace"
+  },
+  "author": {
+    "name": "Demo Developer",
+    "avatarUrl": "https://api.dicebear.com/7.x/shapes/svg?seed=developer&backgroundColor=b6e3f4",
+    "avatarHint": "Developer"
+  },
+  "pagination": {
+    "postsPerPage": 10
+  },
+  "navigation": [
+    { "id": "1", "label": "首页", "href": "/" },
+    { "id": "2", "label": "教程", "href": "/posts/nextjs-blog-getting-started" },
+    { "id": "3", "label": "分类", "href": "/category" },
+    { "id": "4", "label": "友链", "href": "/friends" }
+  ],
+  "categories": [
+    { "id": "tutorial", "name": "教程", "color": "#3b82f6" },
+    { "id": "demo", "name": "示例", "color": "#10b981" },
+    { "id": "component", "name": "组件", "color": "#8b5cf6" },
+    { "id": "guide", "name": "指南", "color": "#f97316" },
+    { "id": "docs", "name": "文档", "color": "#06b6d4" }
+  ],
+  "footer": {
+    "text": "© 2025 QuillStack. MIT License.",
+    "brandName": "QuillStack",
+    "brandDescription": "基于 Next.js 的静态博客系统示例。快速、轻量、易扩展。",
+    "logoIcon": "https://api.dicebear.com/7.x/shapes/svg?seed=logo&backgroundColor=transparent",
+    "madeIn": "Open Source",
+    "socialLinks": [
+      { "id": "social-1", "label": "Git", "href": "https://github.com" },
+      { "id": "social-2", "label": "X", "href": "https://twitter.com" },
+      { "id": "social-3", "label": "mail", "href": "mailto:demo@example.com" }
+    ],
+    "linkSections": [
+      {
+        "id": "section-1",
+        "title": "分类",
+        "links": [
+          { "id": "link-1-1", "label": "教程", "href": "/category/tutorial" },
+          { "id": "link-1-2", "label": "示例", "href": "/category/demo" },
+          { "id": "link-1-3", "label": "组件", "href": "/category/component" },
+          { "id": "link-1-4", "label": "文档", "href": "/category/docs" }
+        ]
+      },
+      {
+        "id": "section-2",
+        "title": "资源",
+        "links": [
+          { "id": "link-2-1", "label": "Next.js 文档", "href": "https://nextjs.org/docs" },
+          { "id": "link-2-2", "label": "Tailwind CSS", "href": "https://tailwindcss.com" },
+          { "id": "link-2-3", "label": "React 文档", "href": "https://react.dev" },
+          { "id": "link-2-4", "label": "TypeScript", "href": "https://www.typescriptlang.org" }
+        ]
+      }
+    ],
+    "legalLinks": [
+      { "id": "legal-1", "label": "MIT License", "href": "https://opensource.org/licenses/MIT" }
+    ]
+  },
+  "theme": {
+    "bodyFont": "PT Sans",
+    "headlineFont": "Space Grotesk"
+  },
+  "seo": {
+    "siteUrl": "http://localhost:3000",
+    "ogImageGenerationLimit": 10,
+    "fallbackOgImage": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&auto=format&fit=crop",
+    "twitterHandle": "@demo",
+    "keywords": ["静态博客", "Next.js", "React", "Tailwind CSS", "TypeScript", "博客模板", "前端开发"]
+  },
+  "ogImage": {
+    "slogan": "现代 · 轻量 · 可扩展",
+    "primaryColor": "#3b82f6",
+    "backgroundColor": "#0f172a",
+    "gradientEndColor": "#1e293b",
+    "textColor": "#f8fafc",
+    "secondaryTextColor": "#94a3b8",
+    "tertiaryTextColor": "#64748b"
+  }
+}

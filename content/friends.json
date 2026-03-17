@@ -1,0 +1,51 @@
+{
+  "description": "这里汇聚了一些优秀的开发者和技术站点，欢迎互相交流学习",
+  "applyInfo": {
+    "title": "申请友链",
+    "description": "如果您想交换友链，请通过邮件联系，需提供：站点名称、简介、头像链接和站点地址。",
+    "email": "demo@example.com",
+    "agreement": "★ 君子协议：\n- 换行测试\n- 换行测试\n- 换行测试"
+  },
+  "links": [
+    {
+      "id": "nextjs",
+      "name": "Next.js",
+      "description": "React 应用框架，支持服务端渲染、静态生成等功能",
+      "avatar": "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png",
+      "url": "https://nextjs.org",
+      "tags": ["React", "框架"]
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "description": "用于构建用户界面的 JavaScript 库",
+      "avatar": "https://react.dev/favicon-32x32.png",
+      "url": "https://react.dev",
+      "tags": ["JavaScript", "库"]
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "description": "JavaScript 的超集，添加了类型系统",
+      "avatar": "https://www.typescriptlang.org/favicon-32x32.png",
+      "url": "https://www.typescriptlang.org",
+      "tags": ["类型系统", "语言"]
+    },
+    {
+      "id": "shadcn",
+      "name": "shadcn/ui",
+      "description": "设计精美的组件库，基于 Radix UI 和 Tailwind CSS",
+      "avatar": "https://ui.shadcn.com/favicon.ico",
+      "url": "https://ui.shadcn.com",
+      "tags": ["组件", "UI"]
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "description": "前端开发者的部署平台，支持 Next.js 等框架",
+      "avatar": "https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png",
+      "url": "https://vercel.com",
+      "tags": ["部署", "平台"]
+    }
+  ]
+}

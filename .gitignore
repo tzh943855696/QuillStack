@@ -1,0 +1,50 @@
+# Node
+node_modules/
+
+# Next.js / build
+.next/
+out/
+dist/
+build/
+public/
+# Production environment files
+.env
+.env.local
+.env.*.local
+
+# Hosting / deployment
+.vercel/
+.now/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+
+# Coverage
+coverage/
+
+# Caches
+.cache/
+
+# Storybook
+storybook-static/
+
+# Yarn PnP
+.pnp.*
+
+# Local history / misc
+.history/
+
+# If you want to ignore additional project-specific folders, add them below:
+# e.g. `public/uploads/` or `tmp/`
