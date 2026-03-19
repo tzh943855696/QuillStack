@@ -6,6 +6,9 @@ Hello, welcome to QuillStack! This is a NextJS project initiated by SnowBall (@S
 
 [Commit History](https://github.com/QuillStack-Blog/QuillStack/commits/main)
 
+> 特别说明：编译之后（out目录下）以及您编写的博文（content目录下）的所有文件的所有权归您所有，您可以将其代码可见性随意设置为私有。
+
+> Special Note: All files in the out directory after compilation, as well as the blog posts you wrote in the content directory, are owned by you. You can freely set their code visibility to private.
 ## Quick Start
 
 ```bash
