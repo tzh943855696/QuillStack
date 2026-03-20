@@ -2,6 +2,8 @@
 
 👋👋🏻👋🏼👋🏽👋🏾👋🏿
 
+**English** | [中文](README_zh.md)
+
 Hello, welcome to QuillStack! This is a NextJS project initiated by SnowBall (@SnowBall-Bqiu).
 
 [Commit History](https://github.com/QuillStack-Blog/QuillStack/commits/main)
@@ -9,6 +11,36 @@ Hello, welcome to QuillStack! This is a NextJS project initiated by SnowBall (@S
 > 特别说明：编译之后（out目录下）以及您编写的博文（content目录下）的所有文件的所有权归您所有，您可以将其代码可见性随意设置为私有。
 
 > Special Note: All files in the out directory after compilation, as well as the blog posts you wrote in the content directory, are owned by you. You can freely set their code visibility to private.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Description |
+|------------|-------------|
+| [Next.js 15](https://nextjs.org) | React framework with App Router |
+| [Tailwind CSS](https://tailwindcss.com) | Utility-first CSS framework |
+| [TypeScript](https://www.typescriptlang.org) | Type-safe JavaScript |
+| [shadcn/ui](https://ui.shadcn.com) | Beautiful UI components (based on Radix UI) |
+| [@vercel/og](https://vercel.com/og) | Open Graph image generation |
+| [marked](https://marked.js.org) | Markdown parser |
+| [date-fns](https://date-fns.org) | Date utility library |
+
+---
+
+## ✨ Features
+
+- 📱 **Responsive Design** - Mobile-first, works on all devices
+- 🌙 **Dark/Light Theme** - Automatic theme switching with `next-themes`
+- 🔍 **SEO Optimized** - JSON-LD, Open Graph, Twitter Cards
+- 🖼️ **Auto OG Images** - Automatically generated social sharing cards
+- 🔗 **Friends Links** - Friends page with application system
+- 📄 **Markdown Support** - Full Markdown syntax with code highlighting
+- 📑 **Category System** - Organize articles by categories
+- 📊 **Pagination** - Configurable posts per page
+
+---
+
 ## Quick Start
 
 ```bash
@@ -204,21 +236,117 @@ Articles are sorted in descending order by `publishedAt` time, with the newest a
 ## Directory Structure
 
 ```
-static-blog-dev/
+QuillStack/
 ├── content/
 │   ├── settings.json    # Site configuration
 │   ├── sitedoc.json     # Article metadata
+│   ├── friends.json     # Friends links configuration
 │   └── doc/             # Markdown articles directory
 │       ├── 1.md
 │       ├── 2.md
 │       └── ...
 ├── src/
-│   ├── app/             # Next.js pages
+│   ├── app/             # Next.js App Router pages
+│   │   ├── (site)/      # Main site pages
+│   │   │   ├── posts/   # Article pages
+│   │   │   ├── category/# Category pages
+│   │   │   └── friends/ # Friends page
+│   │   └── api/         # API routes (if any)
 │   ├── components/      # React components
-│   └── lib/             # Utility functions
+│   │   ├── site/        # Site-specific components
+│   │   ├── ui/          # shadcn/ui components
+│   │   └── seo/         # SEO components
+│   ├── hooks/           # Custom React hooks
+│   └── lib/             # Utility functions and types
+├── scripts/
+│   └── generate-og.tsx  # OG image generation script
 ├── public/              # Static assets
 └── package.json
 ```
+
+---
+
+## Friends Links
+
+The project includes a friends links system configured in [`content/friends.json`](content/friends.json).
+
+### Configuration
+
+```json
+{
+  "description": "Friends description",
+  "applyInfo": {
+    "title": "Apply for friendship",
+    "description": "How to apply...",
+    "email": "your@email.com",
+    "agreement": "Agreement text"
+  },
+  "links": [
+    {
+      "id": "friend-id",
+      "name": "Friend Name",
+      "description": "Friend description",
+      "avatar": "https://example.com/avatar.png",
+      "url": "https://example.com",
+      "tags": ["Tag1", "Tag2"]
+    }
+  ]
+}
+```
+
+### Adding a Friend
+
+1. Edit [`content/friends.json`](content/friends.json)
+2. Add a new object to the `links` array
+3. Save the file - the friends page will update automatically
+
+---
+
+## OG Image Generation
+
+The project automatically generates Open Graph images for social media sharing during the build process. You can also generate them manually:
+
+```bash
+# Generate OG images
+npm run build:og
+```
+
+### Configuration
+
+OG image settings are in `content/settings.json` under the `ogImage` section:
+
+```json
+{
+  "ogImage": {
+    "slogan": "Your Slogan",
+    "primaryColor": "#3b82f6",
+    "backgroundColor": "#0f172a",
+    "gradientEndColor": "#1e293b",
+    "textColor": "#f8fafc",
+    "secondaryTextColor": "#94a3b8",
+    "tertiaryTextColor": "#64748b"
+  }
+}
+```
+
+---
+
+## Deployment
+
+### Vercel (Recommended)
+
+1. Fork GitHub repository
+2. Go to [Vercel](https://vercel.com) and import the repository
+3. Vercel will automatically detect Next.js and configure the build settings
+4. Click Deploy
+
+### Netlify
+
+1. Fork GitHub repository
+2. Go to [Netlify](https://netlify.com) and import the repository
+3. Build command: `npm run build`
+4. Publish directory: `out`
+5. Click Deploy
 
 ---
 
@@ -228,6 +356,17 @@ static-blog-dev/
 2. `categoryId` must match the category `id` in `settings.json`
 3. Images are recommended to use CDN links, avoid putting large images in the repository
 4. Publication time format: `YYYY-MM-DDTHH:mm:ss.sssZ`
+5. The development server runs on port 9002: `npm run dev`
+
+---
+
+## License
+
+[AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.html) - See [LICENSE](LICENSE) file for details.
+
+> **Note**: This project is licensed under AGPL-3.0. If you use this project to provide network services, you must open-source your modifications under the same license.
+
+---
 
 ## Treat me to a bowl of lamian
 

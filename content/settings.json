@@ -19,9 +19,10 @@
   },
   "navigation": [
     { "id": "1", "label": "首页", "href": "/" },
-    { "id": "2", "label": "教程", "href": "/posts/nextjs-blog-getting-started" },
+    { "id": "2", "label": "教程", "href": "/posts/quillstack-blog-getting-started" },
     { "id": "3", "label": "分类", "href": "/category" },
-    { "id": "4", "label": "友链", "href": "/friends" }
+    { "id": "4", "label": "友链", "href": "/friends" },
+    { "id": "5", "label": "仓库地址", "href": "https://github.com/QuillStack-Blog/QuillStack" }
   ],
   "categories": [
     { "id": "tutorial", "name": "教程", "color": "#3b82f6" },
@@ -31,15 +32,13 @@
     { "id": "docs", "name": "文档", "color": "#06b6d4" }
   ],
   "footer": {
-    "text": "© 2025 QuillStack. MIT License.",
+    "text": "© 2025 QuillStack. AGPL-3.0 license.",
     "brandName": "QuillStack",
     "brandDescription": "基于 Next.js 的静态博客系统示例。快速、轻量、易扩展。",
     "logoIcon": "https://api.dicebear.com/7.x/shapes/svg?seed=logo&backgroundColor=transparent",
     "madeIn": "Open Source",
     "socialLinks": [
-      { "id": "social-1", "label": "Git", "href": "https://github.com" },
-      { "id": "social-2", "label": "X", "href": "https://twitter.com" },
-      { "id": "social-3", "label": "mail", "href": "mailto:demo@example.com" }
+      { "id": "social-1", "label": "Git", "href": "https://github.com/QuillStack-Blog/QuillStack" }
     ],
     "linkSections": [
       {
@@ -64,7 +63,7 @@
       }
     ],
     "legalLinks": [
-      { "id": "legal-1", "label": "MIT License", "href": "https://opensource.org/licenses/MIT" }
+      { "id": "legal-1", "label": "AGPL-3.0", "href": "https://www.gnu.org/licenses/agpl-3.0.html" }
     ]
   },
   "theme": {
