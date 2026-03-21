@@ -1,10 +1,22 @@
 import { z } from 'zod';
 
-export const navigationItemSchema = z.object({
-  id: z.string(),
-  label: z.string(),
-  href: z.string(),
-});
+export type NavigationItem = {
+  id: string;
+  label: string;
+  href?: string;
+  items?: NavigationItem[];
+};
+
+export const navigationItemSchema: z.ZodType<NavigationItem> = z.lazy(() =>
+  z.object({
+    id: z.string(),
+    label: z.string(),
+    href: z.string().optional(),
+    items: z.array(navigationItemSchema).optional(),
+  }).refine((item) => Boolean(item.href) || Boolean(item.items?.length), {
+    message: 'Navigation item must include href or items',
+  })
+);
 
 export const headerSettingsSchema = z.object({
   heroImageUrl: z.string(),
@@ -71,6 +83,10 @@ export const paginationSettingsSchema = z.object({
   postsPerPage: z.number().positive(),
 });
 
+export const backToTopSettingsSchema = z.object({
+  showAfter: z.number().nonnegative().default(400),
+});
+
 export const seoSettingsSchema = z.object({
   siteUrl: z.string().url(),
   ogImageGenerationLimit: z.number().int().nonnegative().default(10),
@@ -97,6 +113,7 @@ export const siteSettingsSchema = generalSettingsSchema.extend({
   theme: themeSettingsSchema,
   categories: z.array(categorySchema),
   pagination: paginationSettingsSchema,
+  backToTop: backToTopSettingsSchema.optional(),
   seo: seoSettingsSchema.optional(),
   ogImage: ogImageSettingsSchema.optional(),
 });
@@ -115,7 +132,6 @@ export const articleSchema = z.object({
   category: categorySchema.optional(), // Will be populated by getArticles
 });
 
-export type NavigationItem = z.infer<typeof navigationItemSchema>;
 export type HeaderSettings = z.infer<typeof headerSettingsSchema>;
 export type AuthorSettings = z.infer<typeof authorSettingsSchema>;
 export type FooterSettings = z.infer<typeof footerSettingsSchema>;
@@ -123,6 +139,7 @@ export type ThemeSettings = z.infer<typeof themeSettingsSchema>;
 export type GeneralSettings = z.infer<typeof generalSettingsSchema>;
 export type Category = z.infer<typeof categorySchema>;
 export type PaginationSettings = z.infer<typeof paginationSettingsSchema>;
+export type BackToTopSettings = z.infer<typeof backToTopSettingsSchema>;
 export type SeoSettings = z.infer<typeof seoSettingsSchema>;
 export type OgImageSettings = z.infer<typeof ogImageSettingsSchema>;
 export type SiteSettings = z.infer<typeof siteSettingsSchema>;

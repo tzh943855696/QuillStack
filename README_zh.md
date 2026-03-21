@@ -8,8 +8,9 @@
 
 [提交历史](https://github.com/QuillStack-Blog/QuillStack/commits/main)
 
-> 特别说明：编译之后（out目录下）以及您编写的博文（content目录下）的所有文件的所有权归您所有，您可以将其代码可见性随意设置为私有。
+> 特别说明：编译之后（out目录下）以及您编写的博文（content目录下）的所有文件的所有权归您所有，您可以将其代码可见性随意设置为私有。使用此项目请务必保留页脚的项目地址以及名称。
 
+> Special Note: All files in the out directory after compilation, as well as the blog posts you wrote in the content directory, are owned by you. You can freely set their code visibility to private. When using this project, be sure to retain the project address and name in the footer.
 ---
 
 ## 🛠️ 技术栈
@@ -32,7 +33,10 @@
 - 🌙 **暗色/亮色主题** - 基于 `next-themes` 的自动主题切换
 - 🔍 **SEO 优化** - JSON-LD、Open Graph、Twitter Cards
 - 🖼️ **自动 OG 图片** - 自动生成社交分享卡片
-- 🔗 **友链系统** - 带申请系统的友链页面
+- 📚 **文章目录** - 自动提取 Markdown 标题生成文章侧边目录
+- ⬆️ **返回顶部按钮** - 支持配置显示阈值的悬浮返回顶部按钮
+- 🧭 **嵌套导航菜单** - 顶部导航支持分组下拉菜单
+-  **友链系统** - 带申请系统的友链页面
 - 📄 **Markdown 支持** - 完整 Markdown 语法，支持代码高亮
 - 📑 **分类系统** - 按分类组织文章
 - 📊 **分页功能** - 可配置的每页文章数
@@ -77,7 +81,9 @@ npm run start
 | `title` | 博主姓名 | `"你的名字"` |
 | `bio` | 个人简介 | `"我是一名软件工程师..."` |
 | `avatarUrl` | 头像 URL | `"https://example.com/avatar.jpg"` |
+| `avatarHint` | 头像 alt / 图片提示文本 | `"作者头像"` |
 | `heroImageUrl` | 首页横幅图片 | `"https://example.com/hero.jpg"` |
+| `heroImageHint` | 横幅 alt / 图片提示文本 | `"编程工作台"` |
 
 #### 作者信息 (`author`)
 
@@ -85,6 +91,7 @@ npm run start
 | ----------- | -------- |
 | `name` | 作者姓名 |
 | `avatarUrl` | 作者头像 |
+| `avatarHint` | 作者头像 alt / 图片提示文本 |
 
 #### 分页设置 (`pagination`)
 
@@ -92,14 +99,36 @@ npm run start
 | -------------- | -------------- | ------ |
 | `postsPerPage` | 每页文章数 | `10` |
 
+#### 返回顶部设置 (`backToTop`)
+
+| 字段 | 描述 | 默认值 |
+| -------------- | -------------- | ------ |
+| `showAfter` | 页面滚动多少像素后显示悬浮返回顶部按钮 | `400` |
+
 #### 导航菜单 (`navigation`)
 
 ```json
 "navigation": [
   { "id": "1", "label": "首页", "href": "/" },
-  { "id": "2", "label": "友链", "href": "/friends" }
+  {
+    "id": "2",
+    "label": "资源",
+    "items": [
+      { "id": "2-1", "label": "全部分类", "href": "/category" },
+      { "id": "2-2", "label": "友链", "href": "/friends" }
+    ]
+  }
 ]
 ```
+
+| 字段 | 描述 |
+| ------- | ------------------------ |
+| `id` | 导航项唯一标识 |
+| `label` | 导航显示文本 |
+| `href` | 直达链接项的目标地址 |
+| `items` | 分组菜单下的子导航项数组 |
+
+> ⚠️ 每个导航项必须至少提供 `href` 或 `items` 其中之一。
 
 #### 分类配置 (`categories`)
 
@@ -119,7 +148,41 @@ npm run start
 
 #### 底部配置 (`footer`)
 
-包含底部文本、品牌信息、社交链接和链接组。
+```json
+"footer": {
+  "text": "© 2025 我的博客。保留所有权利。",
+  "brandName": "我的博客",
+  "brandDescription": "一个基于 Next.js 的轻量博客。",
+  "logoIcon": "https://example.com/logo.svg",
+  "madeIn": "Open Source",
+  "socialLinks": [
+    { "id": "social-1", "label": "GitHub", "href": "https://github.com/example" }
+  ],
+  "linkSections": [
+    {
+      "id": "section-1",
+      "title": "资源",
+      "links": [
+        { "id": "link-1-1", "label": "文档", "href": "https://nextjs.org/docs" }
+      ]
+    }
+  ],
+  "legalLinks": [
+    { "id": "legal-1", "label": "AGPL-3.0", "href": "https://www.gnu.org/licenses/agpl-3.0.html" }
+  ]
+}
+```
+
+| 字段 | 描述 |
+| ------- | ------------------------ |
+| `text` | 页脚版权文本 |
+| `brandName` | 页脚品牌名称 |
+| `brandDescription` | 页脚品牌简介 |
+| `logoIcon` | 可选品牌图标 / Logo 地址 |
+| `madeIn` | 附加页脚徽标文本 |
+| `socialLinks` | 社交媒体 / 社区链接 |
+| `linkSections` | 分组页脚链接区块 |
+| `legalLinks` | 法务 / 许可证链接 |
 
 #### 主题配置 (`theme`)
 
@@ -132,7 +195,9 @@ npm run start
 
 | 字段 | 描述 |
 | --------------- | -------------- |
-| `siteUrl` | 官方网站域名 |
+| `siteUrl` | 用于 canonical 与站点元数据的正式站点域名 |
+| `ogImageGenerationLimit` | 构建时使用本地生成 OG 图的文章数量上限 |
+| `fallbackOgImage` | 本地生成图或封面不可用时的兜底分享图地址 |
 | `keywords` | SEO 关键词数组 |
 | `twitterHandle` | Twitter 账号 |
 

@@ -17,12 +17,22 @@
   "pagination": {
     "postsPerPage": 10
   },
+  "backToTop": {
+    "showAfter": 400
+  },
   "navigation": [
     { "id": "1", "label": "首页", "href": "/" },
     { "id": "2", "label": "教程", "href": "/posts/quillstack-blog-getting-started" },
-    { "id": "3", "label": "分类", "href": "/category" },
-    { "id": "4", "label": "友链", "href": "/friends" },
-    { "id": "5", "label": "仓库地址", "href": "https://github.com/QuillStack-Blog/QuillStack" }
+    {
+      "id": "3",
+      "label": "资源",
+      "items": [
+        { "id": "3-1", "label": "全部分类", "href": "/category" },
+        { "id": "3-2", "label": "教程分类", "href": "/category/tutorial" },
+        { "id": "3-3", "label": "友链", "href": "/friends" },
+        { "id": "3-4", "label": "仓库地址", "href": "https://github.com/QuillStack-Blog/QuillStack" }
+      ]
+    }
   ],
   "categories": [
     { "id": "tutorial", "name": "教程", "color": "#3b82f6" },
@@ -63,7 +73,8 @@
       }
     ],
     "legalLinks": [
-      { "id": "legal-1", "label": "AGPL-3.0", "href": "https://www.gnu.org/licenses/agpl-3.0.html" }
+      { "id": "legal-1", "label": "AGPL-3.0", "href": "https://www.gnu.org/licenses/agpl-3.0.html" },
+      { "id": "legal-2", "label": "自豪的使用QuillStack", "href": "https://github.com/QuillStack-Blog/QuillStack" }
     ]
   },
   "theme": {

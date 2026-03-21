@@ -1,6 +1,6 @@
 import type { SiteSettings } from '@/lib/types';
 import Link from 'next/link';
-import { Code, Heart, Feather, Anchor } from 'lucide-react';
+import { Code, Feather, Anchor } from 'lucide-react';
 
 type SiteFooterProps = {
   settings: SiteSettings;
@@ -87,9 +87,7 @@ export default function SiteFooter({ settings }: SiteFooterProps) {
             <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
               <div className="space-y-1 text-center md:text-left">
                 <p>{footer.text}</p>
-                <p className="flex items-center justify-center md:justify-start gap-1.5">
-                  {footer.madeIn} <Heart size={14} className="text-red-500 fill-current" />
-                </p>
+                <p>{footer.madeIn}</p>
               </div>
               <div className="flex items-center gap-4 mt-4 md:mt-0">
                 {footer.legalLinks.map(link => (

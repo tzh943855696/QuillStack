@@ -10,6 +10,8 @@ import Link from 'next/link';
 import PixelBreadcrumb, { breadcrumbPresets } from '@/components/site/PixelBreadcrumb';
 import { ArticleSchema, BreadcrumbSchema, createHomeBreadcrumb, createCategoryBreadcrumb, createCategoryDetailBreadcrumb, createArticleBreadcrumb } from '@/components/seo';
 import { getSiteUrl, buildUrl, truncateDescription, getArticleOgImage } from '@/lib/seo';
+import { TableOfContents } from '@/components/site/TableOfContents';
+import { extractHeadings } from '@/lib/toc';
 
 export async function generateStaticParams() {
   const articles = await getArticles();
@@ -100,6 +102,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     createArticleBreadcrumb(article.slug, article.title),
   ];
 
+  // 提取文章标题用于目录
+  const headings = extractHeadings(article.content || '');
+
   return (
     <>
       <ArticleSchema article={article} settings={settings} />
@@ -114,48 +119,62 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           ]}
         />
       </div>
-      <div className="container mx-auto px-4 pt-4 md:pt-8 max-w-4xl">
-        <div className="bg-card border rounded-xl shadow-lg overflow-hidden">
-          <div className="p-6 md:p-10">
-            <div className="flex flex-wrap items-center justify-between gap-4 text-muted-foreground mb-6">
-              <div className="flex items-center space-x-4 text-sm">
-                {settings.author && (
-                    <Image src={settings.author.avatarUrl} alt={settings.author.avatarHint} width={40} height={40} className="rounded-full" />
-                )}
-                <div className="flex items-center space-x-4">
-                    <div className="flex items-center space-x-2">
+      <div className="container mx-auto px-4 pt-4 md:pt-8">
+        <div className="flex gap-8 max-w-6xl mx-auto">
+          {/* 文章内容 */}
+          <div className="flex-1 min-w-0">
+            <div className="bg-card border rounded-xl shadow-lg overflow-hidden">
+              <div className="p-6 md:p-10">
+                <div className="flex flex-wrap items-center justify-between gap-4 text-muted-foreground mb-6">
+                  <div className="flex items-center space-x-4 text-sm">
+                    {settings.author && (
+                      <Image src={settings.author.avatarUrl} alt={settings.author.avatarHint} width={40} height={40} className="rounded-full" />
+                    )}
+                    <div className="flex items-center space-x-4">
+                      <div className="flex items-center space-x-2">
                         <User className="h-4 w-4" />
                         <span>{settings.author.name}</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
+                      </div>
+                      <div className="flex items-center space-x-2">
                         <Calendar className="h-4 w-4" />
                         <time dateTime={article.publishedAt}>
-                            {format(new Date(article.publishedAt), 'yyyy年MM月dd日')}
+                          {format(new Date(article.publishedAt), 'yyyy年MM月dd日')}
                         </time>
+                      </div>
                     </div>
+                  </div>
+                  {article.category && (
+                    <Link href={`/category/${article.category.id}`}>
+                      <Badge
+                        style={{
+                          // @ts-ignore
+                          '--badge-bg-color': categoryColor,
+                          '--badge-text-color': 'white'
+                        }}
+                        className="mb-4 text-sm font-normal rounded-full py-1 px-3 border-transparent bg-[var(--badge-bg-color)] text-[var(--badge-text-color)]"
+                      >
+                        <div className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: 'white' }}></div>
+                        {article.category.name}
+                      </Badge>
+                    </Link>
+                  )}
                 </div>
+
+                <article className="prose dark:prose-invert max-w-none">
+                  <MarkdownRenderer content={article.content || ''} />
+                </article>
               </div>
-              {article.category && (
-                <Link href={`/category/${article.category.id}`}>
-                    <Badge 
-                      style={{ 
-                        // @ts-ignore
-                        '--badge-bg-color': categoryColor,
-                        '--badge-text-color': 'white'
-                      }}
-                      className="mb-4 text-sm font-normal rounded-full py-1 px-3 border-transparent bg-[var(--badge-bg-color)] text-[var(--badge-text-color)]"
-                    >
-                      <div className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: 'white' }}></div>
-                      {article.category.name}
-                    </Badge>
-                </Link>
-            )}
             </div>
-            
-            <article className="prose dark:prose-invert max-w-none">
-              <MarkdownRenderer content={article.content || ''} />
-            </article>
           </div>
+          
+          {/* 目录侧边栏 - 仅在桌面端显示 */}
+          {headings.length > 0 && (
+            <aside className="hidden lg:block w-64 flex-shrink-0">
+              <div className="sticky top-24">
+                <TableOfContents items={headings} className="bg-card border rounded-lg p-4" />
+              </div>
+            </aside>
+          )}
         </div>
       </div>
     </>

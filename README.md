@@ -8,9 +8,9 @@ Hello, welcome to QuillStack! This is a NextJS project initiated by SnowBall (@S
 
 [Commit History](https://github.com/QuillStack-Blog/QuillStack/commits/main)
 
-> 特别说明：编译之后（out目录下）以及您编写的博文（content目录下）的所有文件的所有权归您所有，您可以将其代码可见性随意设置为私有。
+> 特别说明：编译之后（out目录下）以及您编写的博文（content目录下）的所有文件的所有权归您所有，您可以将其代码可见性随意设置为私有。使用此项目请务必保留页脚的项目地址以及名称。
 
-> Special Note: All files in the out directory after compilation, as well as the blog posts you wrote in the content directory, are owned by you. You can freely set their code visibility to private.
+> Special Note: All files in the out directory after compilation, as well as the blog posts you wrote in the content directory, are owned by you. You can freely set their code visibility to private. When using this project, be sure to retain the project address and name in the footer.
 
 ---
 
@@ -34,6 +34,9 @@ Hello, welcome to QuillStack! This is a NextJS project initiated by SnowBall (@S
 - 🌙 **Dark/Light Theme** - Automatic theme switching with `next-themes`
 - 🔍 **SEO Optimized** - JSON-LD, Open Graph, Twitter Cards
 - 🖼️ **Auto OG Images** - Automatically generated social sharing cards
+- 📚 **Table of Contents** - Automatically extracts Markdown headings into an article sidebar
+- ⬆️ **Back to Top Button** - Floating scroll-to-top button with configurable display threshold
+- 🧭 **Nested Navigation** - Header navigation supports grouped menu items
 - 🔗 **Friends Links** - Friends page with application system
 - 📄 **Markdown Support** - Full Markdown syntax with code highlighting
 - 📑 **Category System** - Organize articles by categories
@@ -79,7 +82,9 @@ The main configuration file for the site, containing the following sections:
 | `title` | Blogger Name | `"Your Name"` |
 | `bio` | Personal Bio | `"I'm a software engineer..."` |
 | `avatarUrl` | Avatar URL | `"https://example.com/avatar.jpg"` |
-| `heroImageUrl` | Homepage Banner Image | `"https://example.com/hero.jpg"` |
+| `avatarHint` | Avatar alt / image hint text | `"Portrait of the author"` |
+| `heroImageUrl` | Homepage banner image | `"https://example.com/hero.jpg"` |
+| `heroImageHint` | Banner alt / image hint text | `"Coding workspace"` |
 
 #### Author Information (`author`)
 
@@ -87,6 +92,7 @@ The main configuration file for the site, containing the following sections:
 | ----------- | -------- |
 | `name` | Author Name |
 | `avatarUrl` | Author Avatar |
+| `avatarHint` | Author avatar alt / image hint text |
 
 #### Pagination Settings (`pagination`)
 
@@ -94,14 +100,36 @@ The main configuration file for the site, containing the following sections:
 | -------------- | -------------- | ------ |
 | `postsPerPage` | Number of posts per page | `10` |
 
+#### Back to Top Settings (`backToTop`)
+
+| Field | Description | Default Value |
+| -------------- | -------------- | ------ |
+| `showAfter` | Scroll distance in pixels before the floating back-to-top button appears | `400` |
+
 #### Navigation Menu (`navigation`)
 
 ```json
 "navigation": [
   { "id": "1", "label": "Home", "href": "/" },
-  { "id": "2", "label": "Friends", "href": "https://example.com/friends" }
+  {
+    "id": "2",
+    "label": "Resources",
+    "items": [
+      { "id": "2-1", "label": "All Categories", "href": "/category" },
+      { "id": "2-2", "label": "Friends", "href": "/friends" }
+    ]
+  }
 ]
 ```
+
+| Field | Description |
+| ------- | ------------------------ |
+| `id` | Navigation item identifier |
+| `label` | Display text |
+| `href` | Link target for a direct navigation item |
+| `items` | Nested child navigation items for grouped menus |
+
+> ⚠️ Each navigation item must provide either `href` or `items`.
 
 #### Category Configuration (`categories`)
 
@@ -121,7 +149,41 @@ The main configuration file for the site, containing the following sections:
 
 #### Footer Configuration (`footer`)
 
-Contains footer text, brand information, social links, and link groups.
+```json
+"footer": {
+  "text": "© 2025 My Blog. All rights reserved.",
+  "brandName": "My Blog",
+  "brandDescription": "A lightweight blog built with Next.js.",
+  "logoIcon": "https://example.com/logo.svg",
+  "madeIn": "Open Source",
+  "socialLinks": [
+    { "id": "social-1", "label": "GitHub", "href": "https://github.com/example" }
+  ],
+  "linkSections": [
+    {
+      "id": "section-1",
+      "title": "Resources",
+      "links": [
+        { "id": "link-1-1", "label": "Docs", "href": "https://nextjs.org/docs" }
+      ]
+    }
+  ],
+  "legalLinks": [
+    { "id": "legal-1", "label": "AGPL-3.0", "href": "https://www.gnu.org/licenses/agpl-3.0.html" }
+  ]
+}
+```
+
+| Field | Description |
+| ------- | ------------------------ |
+| `text` | Footer copyright text |
+| `brandName` | Footer brand name |
+| `brandDescription` | Short footer brand description |
+| `logoIcon` | Optional brand icon / logo URL |
+| `madeIn` | Additional footer badge text |
+| `socialLinks` | Social media / community links |
+| `linkSections` | Grouped footer link sections |
+| `legalLinks` | Legal / license links |
 
 #### Theme Configuration (`theme`)
 
@@ -134,7 +196,9 @@ Contains footer text, brand information, social links, and link groups.
 
 | Field | Description |
 | --------------- | -------------- |
-| `siteUrl` | Official website domain |
+| `siteUrl` | Official website domain used for canonical URLs and metadata |
+| `ogImageGenerationLimit` | Number of articles that use generated local OG images during build |
+| `fallbackOgImage` | Fallback share image URL when generated/local cover is unavailable |
 | `keywords` | SEO keywords array |
 | `twitterHandle` | Twitter handle |
 

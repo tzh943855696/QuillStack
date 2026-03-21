@@ -1,16 +1,33 @@
 import { marked } from 'marked';
+import { extractHeadings } from '@/lib/toc';
 
 type MarkdownRendererProps = {
   content: string;
 };
 
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
-  const htmlContent = marked(content || '', { gfm: true });
+  const markdownContent = content || '';
+  const headings = extractHeadings(markdownContent);
+  const htmlContent = marked.parse(markdownContent, { gfm: true }) as string;
+
+  let headingIndex = 0;
+  const htmlWithHeadingIds = htmlContent.replace(
+    /<h([1-6])>([\s\S]*?)<\/h\1>/g,
+    (match, level, innerHtml) => {
+      const heading = headings[headingIndex++];
+
+      if (!heading) {
+        return match;
+      }
+
+      return `<h${level} id="${heading.id}">${innerHtml}</h${level}>`;
+    }
+  );
 
   return (
     <div
       className="prose dark:prose-invert prose-headings:font-headline max-w-none"
-      dangerouslySetInnerHTML={{ __html: htmlContent as string }}
+      dangerouslySetInnerHTML={{ __html: htmlWithHeadingIds }}
     />
   );
 }

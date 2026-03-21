@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { getSiteSettings } from '@/lib/data';
+import BackToTopButton from '@/components/site/BackToTopButton';
 import SiteFooter from '@/components/site/SiteFooter';
 import SiteHeader from '@/components/site/SiteHeader';
 
@@ -16,6 +17,7 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
         {children}
       </main>
       <SiteFooter settings={settings} />
+      <BackToTopButton showAfter={settings.backToTop?.showAfter ?? 400} />
     </div>
   );
 }

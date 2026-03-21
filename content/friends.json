@@ -8,6 +8,14 @@
   },
   "links": [
     {
+      "id": "Bqius blog",
+      "name": "雪球Bqiu的小破站",
+      "description": "今天吃啥，明天干点啥 q(≧▽≦q)",
+      "avatar": "https://qq-avatar.bqiu.ru/avatar/640",
+      "url": "https://static-blog.bqiu.top",
+      "tags": ["个人博客", "QuillStack作者"]
+    },
+    {
       "id": "nextjs",
       "name": "Next.js",
       "description": "React 应用框架，支持服务端渲染、静态生成等功能",

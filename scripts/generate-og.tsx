@@ -48,6 +48,58 @@ const defaultOgConfig = {
   tertiaryTextColor: '#64748b',
 };
 
+const DEFAULT_REMOTE_IMAGE_USER_AGENT =
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36';
+
+const remoteImageCache = new Map<string, Promise<string>>();
+
+function isRemoteImageUrl(src: string) {
+  return /^https?:\/\//i.test(src);
+}
+
+async function fetchRemoteImageAsDataUrl(src: string): Promise<string> {
+  const response = await fetch(src, {
+    headers: {
+      'User-Agent': DEFAULT_REMOTE_IMAGE_USER_AGENT,
+      Accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status} ${response.statusText}`);
+  }
+
+  const contentType = response.headers.get('content-type')?.split(';')[0] ?? 'application/octet-stream';
+  const arrayBuffer = await response.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
+
+  if (contentType === 'image/svg+xml') {
+    const svg = buffer.toString('utf-8').replace(/^\uFEFF/, '');
+    return `data:image/svg+xml;base64,${Buffer.from(svg, 'utf-8').toString('base64')}`;
+  }
+
+  return `data:${contentType};base64,${buffer.toString('base64')}`;
+}
+
+async function resolveImageSrc(src: string): Promise<string> {
+  if (!isRemoteImageUrl(src)) {
+    return src;
+  }
+
+  if (!remoteImageCache.has(src)) {
+    remoteImageCache.set(
+      src,
+      fetchRemoteImageAsDataUrl(src).catch((error) => {
+        console.warn(`⚠️ 下载远程图片失败，回退到原始地址: ${src}`);
+        console.warn(error);
+        return src;
+      })
+    );
+  }
+
+  return remoteImageCache.get(src)!;
+}
+
 // 获取 OG 配置（合并默认值）
 function getOgConfig(settings: SiteSettings) {
   return { ...defaultOgConfig, ...settings.ogImage };
@@ -81,6 +133,7 @@ function loadArticles(): Article[] {
 async function generateHomeOg(settings: SiteSettings, outputDir: string) {
   console.log('🏠 生成首页 OG 图片...');
   const ogConfig = getOgConfig(settings);
+  const authorAvatarSrc = await resolveImageSrc(settings.author.avatarUrl);
 
   const jsx = (
     <div
@@ -104,7 +157,7 @@ async function generateHomeOg(settings: SiteSettings, outputDir: string) {
         }}
       >
         <img
-          src={settings.author.avatarUrl}
+          src={authorAvatarSrc}
           width="80"
           height="80"
           style={{
@@ -193,6 +246,7 @@ async function generateCategoryOg(
 ) {
   console.log(`📁 生成分类 "${category.name}" OG 图片...`);
   const ogConfig = getOgConfig(settings);
+  const authorAvatarSrc = await resolveImageSrc(settings.author.avatarUrl);
 
   const jsx = (
     <div
@@ -220,7 +274,7 @@ async function generateCategoryOg(
         }}
       >
         <img
-          src={settings.author.avatarUrl}
+          src={authorAvatarSrc}
           width="40"
           height="40"
           style={{ borderRadius: '50%' }}
@@ -295,6 +349,7 @@ async function generateArticleOg(
 ) {
   console.log(`📝 生成文章 "${article.title}" OG 图片...`);
   const ogConfig = getOgConfig(settings);
+  const authorAvatarSrc = await resolveImageSrc(settings.author.avatarUrl);
 
   const jsx = (
     <div
@@ -311,7 +366,7 @@ async function generateArticleOg(
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         <img
-          src={settings.author.avatarUrl}
+          src={authorAvatarSrc}
           width="48"
           height="48"
           style={{ borderRadius: '50%' }}
@@ -394,6 +449,7 @@ async function generateArticleOg(
 async function generateDefaultOg(settings: SiteSettings, outputDir: string) {
   console.log('🖼️ 生成默认 OG 图片...');
   const ogConfig = getOgConfig(settings);
+  const authorAvatarSrc = await resolveImageSrc(settings.author.avatarUrl);
 
   const jsx = (
     <div
@@ -410,7 +466,7 @@ async function generateDefaultOg(settings: SiteSettings, outputDir: string) {
       }}
     >
       <img
-        src={settings.author.avatarUrl}
+        src={authorAvatarSrc}
         width="120"
         height="120"
         style={{ borderRadius: '50%', marginBottom: '30px' }}
