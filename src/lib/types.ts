@@ -93,6 +93,11 @@ export const seoSettingsSchema = z.object({
   fallbackOgImage: z.string().url(),
   twitterHandle: z.string().optional(),
   keywords: z.array(z.string()).default([]),
+  rss: z.object({
+    enabled: z.boolean().default(true),
+    title: z.string().optional(),
+    description: z.string().optional(),
+  }).optional(),
 });
 
 export const ogImageSettingsSchema = z.object({

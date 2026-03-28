@@ -7,11 +7,22 @@
 
 Hello, welcome to QuillStack! This is a NextJS project initiated by SnowBall (@SnowBall-Bqiu).
 
+[Repository](https://github.com/QuillStack-Blog/QuillStack)
+
 [Commit History](https://github.com/QuillStack-Blog/QuillStack/commits/main)
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=QuillStack-Blog/QuillStack&type=Date)](https://star-history.com/#QuillStack-Blog/QuillStack&Date)
+
+## Contributors
+
+[![Contributors](https://contrib.rocks/image?repo=QuillStack-Blog/QuillStack)](https://github.com/QuillStack-Blog/QuillStack/graphs/contributors)
+
 
 > 特别说明：编译之后（out目录下）以及您编写的博文（content目录下）的所有文件的所有权归您所有，您可以将其代码可见性随意设置为私有。使用此项目请务必保留页脚的项目地址以及名称。
 
-> Special Note: All files in the out directory after compilation, as well as the blog posts you wrote in the content directory, are owned by you. You can freely set their code visibility to private. When using this project, be sure to retain the project address and name in the footer.
+> Special Note: All files in the "out" directory after compilation, as well as the blog posts you wrote in the content directory, are owned by you. You can freely set their code visibility to private. When using this project, be sure to retain the project address and name in the footer.
 
 ---
 
@@ -33,7 +44,7 @@ Hello, welcome to QuillStack! This is a NextJS project initiated by SnowBall (@S
 
 - 📱 **Responsive Design** - Mobile-first, works on all devices
 - 🌙 **Dark/Light Theme** - Automatic theme switching with `next-themes`
-- 🔍 **SEO Optimized** - JSON-LD, Open Graph, Twitter Cards
+- 🔍 **SEO Optimized** - JSON-LD, Open Graph, Twitter Cards, configurable sitemap generation
 - 🖼️ **Auto OG Images** - Automatically generated social sharing cards
 - 📚 **Table of Contents** - Automatically extracts Markdown headings into an article sidebar
 - ⬆️ **Back to Top Button** - Floating scroll-to-top button with configurable display threshold
@@ -203,7 +214,41 @@ The main configuration file for the site, containing the following sections:
 | `keywords` | SEO keywords array |
 | `twitterHandle` | Twitter handle |
 
+#### Sitemap Configuration (`sitemap`)
+
+Use this block to control whether `sitemap.xml` is generated automatically during each build.
+
+```json
+"sitemap": {
+  "enabled": true,
+  "changefreq": "weekly",
+  "priority": 0.7
+}
+```
+
+| Field | Optional Values / Range | Description |
+| --------------- | -------------- | -------------- |
+| `enabled` | `true` / `false` | Whether to generate `sitemap.xml` automatically during `npm run build` |
+| `changefreq` | `always`, `hourly`, `daily`, `weekly`, `monthly`, `yearly`, `never` | Default `<changefreq>` value written for category pages, friends page, and article pages. It indicates the suggested update frequency for search engines. |
+| `priority` | `0.0` - `1.0` | Default `<priority>` value used for article pages. Higher values mean relatively more important pages within the same site. |
+
+Notes:
+
+- The script reads `content/settings.json` on every build.
+- If `enabled` is `false`, sitemap generation is skipped.
+- The generated file is written to `out/sitemap.xml` and also synced to `public/sitemap.xml`.
+- Please set `seo.siteUrl` to your real production domain, otherwise sitemap links will use the configured placeholder domain.
+- `changefreq` optional values:
+  - `always`: the page may change on nearly every visit
+  - `hourly`: the page is typically updated every hour
+  - `daily`: the page is typically updated every day
+  - `weekly`: the page is typically updated every week
+  - `monthly`: the page is typically updated every month
+  - `yearly`: the page is typically updated every year
+  - `never`: the page is usually not expected to change for a long time
+
 #### OG Image Configuration (`ogImage`)
+
 
 Style configuration for generating social media sharing cards.
 
@@ -430,6 +475,7 @@ OG image settings are in `content/settings.json` under the `ogImage` section:
 [AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.html) - See [LICENSE](LICENSE) file for details.
 
 > **Note**: This project is licensed under AGPL-3.0. If you use this project to provide network services, you must open-source your modifications under the same license.
+> **Special Note**: All files in the out directory after compilation, as well as the blog posts you wrote in the content directory, are owned by you. You can freely set their code visibility to private. When using this project, be sure to retain the project address and name in the footer.
 
 ---
 

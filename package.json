@@ -4,11 +4,14 @@
   "private": true,
   "license": "AGPL-3.0",
   "scripts": {
+    "predev": "npm run build:sitemap && npm run build:rss",
     "dev": "next dev --turbopack -p 9002",
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
     "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
     "build:og": "tsx scripts/generate-og.tsx",
-    "build": "npm run build:og && next build",
+    "build:sitemap": "tsx scripts/generate-sitemap.ts",
+    "build:rss": "tsx scripts/generate-rss.ts",
+    "build": "npm run build:sitemap && npm run build:rss && npm run build:og && next build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit"

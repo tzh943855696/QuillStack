@@ -1,12 +1,8 @@
 import type { NextConfig } from 'next';
-import { PHASE_DEVELOPMENT_SERVER } from 'next/constants';
 
-export default function createNextConfig(phase: string): NextConfig {
-  const isDevelopment = phase === PHASE_DEVELOPMENT_SERVER;
-
+export default function createNextConfig(): NextConfig {
   return {
     /* config options here */
-    distDir: isDevelopment ? '.next' : '_qs',
     output: 'export',
     typescript: {
       ignoreBuildErrors: true,

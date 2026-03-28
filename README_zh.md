@@ -6,11 +6,22 @@
 
 你好，欢迎来到 QuillStack！这是一个由 SnowBall (@SnowBall-Bqiu) 发起的 NextJS 项目。
 
+[仓库地址](https://github.com/QuillStack-Blog/QuillStack)
+
 [提交历史](https://github.com/QuillStack-Blog/QuillStack/commits/main)
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=QuillStack-Blog/QuillStack&type=Date)](https://star-history.com/#QuillStack-Blog/QuillStack&Date)
+
+## 贡献者
+
+[![Contributors](https://contrib.rocks/image?repo=QuillStack-Blog/QuillStack)](https://github.com/QuillStack-Blog/QuillStack/graphs/contributors)
+
 
 > 特别说明：编译之后（out目录下）以及您编写的博文（content目录下）的所有文件的所有权归您所有，您可以将其代码可见性随意设置为私有。使用此项目请务必保留页脚的项目地址以及名称。
 
-> Special Note: All files in the out directory after compilation, as well as the blog posts you wrote in the content directory, are owned by you. You can freely set their code visibility to private. When using this project, be sure to retain the project address and name in the footer.
+> Special Note: All files in the "out" directory after compilation, as well as the blog posts you wrote in the content directory, are owned by you. You can freely set their code visibility to private. When using this project, be sure to retain the project address and name in the footer.
 ---
 
 ## 🛠️ 技术栈
@@ -31,7 +42,7 @@
 
 - 📱 **响应式设计** - 移动端优先，适配所有设备
 - 🌙 **暗色/亮色主题** - 基于 `next-themes` 的自动主题切换
-- 🔍 **SEO 优化** - JSON-LD、Open Graph、Twitter Cards
+- 🔍 **SEO 优化** - JSON-LD、Open Graph、Twitter Cards、可配置 sitemap 生成功能
 - 🖼️ **自动 OG 图片** - 自动生成社交分享卡片
 - 📚 **文章目录** - 自动提取 Markdown 标题生成文章侧边目录
 - ⬆️ **返回顶部按钮** - 支持配置显示阈值的悬浮返回顶部按钮
@@ -201,7 +212,42 @@ npm run start
 | `keywords` | SEO 关键词数组 |
 | `twitterHandle` | Twitter 账号 |
 
+#### Sitemap 配置 (`sitemap`)
+
+使用这个配置块来控制每次构建时是否自动生成 `sitemap.xml`。
+
+```json
+"sitemap": {
+  "enabled": true,
+  "changefreq": "weekly",
+  "priority": 0.7
+}
+```
+
+| 字段 | 可选值 / 范围 | 说明 |
+| --------------- | -------------- | -------------- |
+| `enabled` | `true` / `false` | 是否在执行 `npm run build` 时自动生成 `sitemap.xml` |
+| `changefreq` | `always`、`hourly`、`daily`、`weekly`、`monthly`、`yearly`、`never` | 分类页、友链页、文章页默认写入的 `<changefreq>` 值，用于告诉搜索引擎该页面通常的更新频率 |
+| `priority` | `0.0` - `1.0` | 文章页默认使用的 `<priority>` 值，数值越高表示该页面在站内相对越重要 |
+
+
+说明：
+
+- 构建时脚本会自动读取 `content/settings.json`。
+- 当 `enabled` 为 `false` 时，会跳过 sitemap 生成。
+- 生成后的文件会写入 `out/sitemap.xml`，同时同步到 `public/sitemap.xml`。
+- 请将 `seo.siteUrl` 设置为你的正式线上域名，否则 sitemap 中会使用当前配置里的占位域名。
+- `changefreq` 可选值说明：
+  - `always`：几乎每次访问都可能变化
+  - `hourly`：通常每小时更新
+  - `daily`：通常每天更新
+  - `weekly`：通常每周更新
+  - `monthly`：通常每月更新
+  - `yearly`：通常每年更新
+  - `never`：通常长期不更新
+
 #### OG 图片配置 (`ogImage`)
+
 
 生成社交媒体分享卡片的样式配置。
 
@@ -395,6 +441,7 @@ OG 图片设置在 [`content/settings.json`](content/settings.json) 的 `ogImage
 [AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.html) - 详见 [LICENSE](LICENSE) 文件。
 
 > **注意**：本项目采用 AGPL-3.0 许可证。如果您使用本项目提供网络服务，必须在相同许可证下开源您的修改。
+> **特别说明**：编译之后（out目录下）以及您编写的博文（content目录下）的所有文件的所有权归您所有，您可以将其代码可见性随意设置为私有。使用此项目请务必保留页脚的项目地址以及名称。
 
 ---
 

@@ -65,10 +65,11 @@
         "id": "section-2",
         "title": "资源",
         "links": [
-          { "id": "link-2-1", "label": "Next.js 文档", "href": "https://nextjs.org/docs" },
-          { "id": "link-2-2", "label": "Tailwind CSS", "href": "https://tailwindcss.com" },
-          { "id": "link-2-3", "label": "React 文档", "href": "https://react.dev" },
-          { "id": "link-2-4", "label": "TypeScript", "href": "https://www.typescriptlang.org" }
+        { "id": "link-2-1", "label": "RSS 订阅", "href": "/rss.xml" },
+        { "id": "link-2-2", "label": "Next.js 文档", "href": "https://nextjs.org/docs" },
+        { "id": "link-2-3", "label": "Tailwind CSS", "href": "https://tailwindcss.com" },
+        { "id": "link-2-4", "label": "React 文档", "href": "https://react.dev" },
+        { "id": "link-2-5", "label": "TypeScript", "href": "https://www.typescriptlang.org" }
         ]
       }
     ],
@@ -82,11 +83,16 @@
     "headlineFont": "Space Grotesk"
   },
   "seo": {
-    "siteUrl": "http://localhost:3000",
+    "siteUrl": "https://demo.qs.js.cn",
     "ogImageGenerationLimit": 10,
     "fallbackOgImage": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&auto=format&fit=crop",
     "twitterHandle": "@demo",
-    "keywords": ["静态博客", "Next.js", "React", "Tailwind CSS", "TypeScript", "博客模板", "前端开发"]
+    "keywords": ["静态博客", "Next.js", "React", "Tailwind CSS", "TypeScript", "博客模板", "前端开发"],
+    "rss": {
+      "enabled": true,
+      "title": "QuillStack RSS 订阅",
+      "description": "订阅 QuillStack 的最新文章更新"
+    }
   },
   "ogImage": {
     "slogan": "现代 · 轻量 · 可扩展",
@@ -96,5 +102,10 @@
     "textColor": "#f8fafc",
     "secondaryTextColor": "#94a3b8",
     "tertiaryTextColor": "#64748b"
+  },
+  "sitemap": {
+    "enabled": true,
+    "changefreq": "weekly",
+    "priority": 0.7
   }
 }

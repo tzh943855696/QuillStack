@@ -49,3 +49,7 @@ storybook-static/
 
 # If you want to ignore additional project-specific folders, add them below:
 # e.g. `public/uploads/` or `tmp/`
+
+# IDE
+.vscode/
+.codebuddy/
