@@ -51,6 +51,7 @@ Hello, welcome to QuillStack! This is a NextJS project initiated by SnowBall (@S
 - 🧭 **Nested Navigation** - Header navigation supports grouped menu items
 - 🔗 **Friends Links** - Friends page with application system
 - 📄 **Markdown Support** - Full Markdown syntax with code highlighting
+- 🎬 **Bilibili Video Embed** - Embed Bilibili videos in articles with customizable player size
 - 📑 **Category System** - Organize articles by categories
 - 📊 **Pagination** - Configurable posts per page
 
@@ -340,6 +341,34 @@ Articles are sorted in descending order by `publishedAt` time, with the newest a
 
 1. Directly edit the corresponding `.md` file to modify content
 2. To modify title, summary, etc., edit the corresponding entry in `sitedoc.json`
+
+---
+
+## Bilibili Video Embed
+
+The project supports embedding Bilibili videos in Markdown articles using image syntax.
+
+### Usage
+
+```markdown
+![](https://www.bilibili.com/video/BV1K5Mjz4EcP/ =500x281)
+```
+
+### Size Parameters
+
+- Add a space after the URL, then input `=widthxheight` to specify the player size
+- Example: `=500x281` means width 500 pixels, height 281 pixels
+- If no size is specified, the default size is 668×376 pixels
+
+### Examples
+
+```markdown
+<!-- Custom size -->
+![](https://www.bilibili.com/video/BV1K5Mjz4EcP/ =500x281)
+
+<!-- Default size -->
+![](https://www.bilibili.com/video/BV1K5Mjz4EcP/)
+```
 
 ---
 
