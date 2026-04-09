@@ -95,7 +95,7 @@ export default function PaginationControls({
 
   return (
     <div>
-      <div className="space-y-8 max-w-4xl">
+      <div className="space-y-8 max-w-4xl mx-auto">
         {paginatedArticles.map(article => (
           <PostCard key={article.id} article={article} author={author} />
         ))}

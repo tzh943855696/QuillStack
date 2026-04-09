@@ -39,7 +39,8 @@
     { "id": "demo", "name": "示例", "color": "#10b981" },
     { "id": "component", "name": "组件", "color": "#8b5cf6" },
     { "id": "guide", "name": "指南", "color": "#f97316" },
-    { "id": "docs", "name": "文档", "color": "#06b6d4" }
+    { "id": "docs", "name": "文档", "color": "#06b6d4" },
+    { "id": "React", "name": "React", "color": "#3b82f6" }
   ],
   "footer": {
     "text": "© 2025 QuillStack. AGPL-3.0 license.",
