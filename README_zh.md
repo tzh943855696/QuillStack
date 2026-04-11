@@ -345,28 +345,33 @@ console.log("Hello World");
 
 ## B站视频嵌入
 
-项目支持在 Markdown 文章中嵌入 B站视频，使用图片语法即可实现。
+项目支持在 Markdown 文章中嵌入 B站视频，使用类似图片语法的自定义标签即可实现。
 
 ### 使用方法
 
 ```markdown
-![](https://www.bilibili.com/video/BV1K5Mjz4EcP/ =500x281)
+@[bilibili](https://www.bilibili.com/video/BV1GJ411x7h7 =500x281)
 ```
-
+@[bilibili](https://www.bilibili.com/video/BV1GJ411x7h7)
 ### 尺寸参数
 
 - 在 URL 后加空格，输入 `=宽x高` 即可指定播放器尺寸
 - 示例：`=500x281` 表示宽度 500 像素，高度 281 像素
-- 如果不指定尺寸，默认使用 668×376 像素
+- 如果不指定尺寸，默认使用 800×450 像素
+
+### 支持的 URL 格式
+
+- `https://www.bilibili.com/video/BVxxxxxx`
+- `https://bilibili.com/video/BVxxxxxx`
 
 ### 示例
 
 ```markdown
 <!-- 自定义尺寸 -->
-![](https://www.bilibili.com/video/BV1K5Mjz4EcP/ =500x281)
+@[bilibili](https://www.bilibili.com/video/BV1GJ411x7h7 =500x281)
 
 <!-- 使用默认尺寸 -->
-![](https://www.bilibili.com/video/BV1K5Mjz4EcP/)
+@[bilibili](https://www.bilibili.com/video/BV1GJ411x7h7)
 ```
 
 ---

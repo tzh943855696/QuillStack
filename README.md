@@ -346,28 +346,33 @@ Articles are sorted in descending order by `publishedAt` time, with the newest a
 
 ## Bilibili Video Embed
 
-The project supports embedding Bilibili videos in Markdown articles using image syntax.
+The project supports embedding Bilibili videos in Markdown articles using a custom syntax similar to image syntax.
 
 ### Usage
 
 ```markdown
-![](https://www.bilibili.com/video/BV1K5Mjz4EcP/ =500x281)
+@[bilibili](https://www.bilibili.com/video/BV1GJ411x7h7 =500x281)
 ```
 
 ### Size Parameters
 
 - Add a space after the URL, then input `=widthxheight` to specify the player size
 - Example: `=500x281` means width 500 pixels, height 281 pixels
-- If no size is specified, the default size is 668×376 pixels
+- If no size is specified, the default size is 800×450 pixels
+
+### Supported URL Formats
+
+- `https://www.bilibili.com/video/BVxxxxxx`
+- `https://bilibili.com/video/BVxxxxxx`
 
 ### Examples
 
 ```markdown
 <!-- Custom size -->
-![](https://www.bilibili.com/video/BV1K5Mjz4EcP/ =500x281)
+@[bilibili](https://www.bilibili.com/video/BV1GJ411x7h7 =500x281)
 
 <!-- Default size -->
-![](https://www.bilibili.com/video/BV1K5Mjz4EcP/)
+@[bilibili](https://www.bilibili.com/video/BV1GJ411x7h7)
 ```
 
 ---

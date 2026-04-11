@@ -53,3 +53,7 @@ storybook-static/
 # IDE
 .vscode/
 .codebuddy/
+
+# files
+CODE_ISSUE_SUMMARY.md
+DEVELOPMENT_PLAN.md
