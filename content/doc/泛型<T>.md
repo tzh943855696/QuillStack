@@ -62,3 +62,35 @@ axios.get<Data>("./data.json").then((res) => {
   console.log(res)
 })
 ```
+
+## 泛型约束与 keyof 关键字
+```ts
+interface Len {
+    length: number
+}
+
+function add<T extends Len>(a: T,b: T):T {
+    return a+b 
+}
+
+add(1,3)
+add('a','b')
+
+
+// 模拟一个type Partial<>的实现
+interface Data {
+    name: string
+    age: number
+    sex: string
+}
+
+// keyof会遍历出所有的key Key in keyof T就像for i in xx
+type partial<T extends object> = {
+    [Key in keyof T]?: T[Key]
+}
+
+type readonly<T extends object> = {
+    readonly [Key in keyof T]: T[Key]
+}
+
+```
